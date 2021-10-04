@@ -1,5 +1,5 @@
 public class Player {
-    private int score = 0;
+    private int score = 1000;
     private String name;
 
     public Player(String name) {
