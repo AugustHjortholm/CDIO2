@@ -30,10 +30,8 @@ public class Game_Controller {
 
     private void swapActivePlayer() {
         if (this.activePlayer.getName().equals(this.player1.getName())) {
-            this.player1 = this.activePlayer;
             this.activePlayer = this.player2;
         } else {
-            this.player2 = this.activePlayer;
             this.activePlayer = this.player1;
         }
     }
