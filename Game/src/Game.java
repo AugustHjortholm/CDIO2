@@ -11,7 +11,8 @@ public class Game {
             case 9 -> 60;
             case 10 -> -80;
             case 11 -> -50;
-            default -> 650;
+            case 12 -> 650;
+            default -> 0;
         };
     }
 }

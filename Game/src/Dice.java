@@ -24,7 +24,7 @@ public class Dice {
     public int getDie2() {
         return this.die2;
     }
-
+    //Should we remove the get setDie1 and setDie2 and replace them with setSum since nothing in the game cares about the separate dies but cares only for their sum.
     public void setDie1(int die1) {
         this.die1 = die1;
     }
