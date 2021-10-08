@@ -6,6 +6,7 @@ public class Game_Controller {
     private Player player2 = new Player("Player2");
     private Player activePlayer;
     private Game gameBoard;
+    private boolean gameRunning = true;
 
     public Game_Controller() {
         this.activePlayer = this.player1;
@@ -15,11 +16,14 @@ public class Game_Controller {
     public void play() {
         System.out.println(this.activePlayer.getName() + " starts!");
 
-        while (true) {
+        while (gameRunning) {
             this.dice.roll();
             activePlayer.addToScore(gameBoard.addToScore(this.dice.getSum()));
             this.updateActivePlayerScore();
             this.swapActivePlayer();
+            if(checkForWin()){
+                gameRunning = false;
+            }
         }
     }
 
@@ -33,6 +37,15 @@ public class Game_Controller {
             this.activePlayer = this.player2;
         } else {
             this.activePlayer = this.player1;
+        }
+    }
+
+    private boolean checkForWin() {
+        if (activePlayer.getScore()>=3000){
+            System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
+            return true;
+        } else {
+            return false;
         }
     }
 }
