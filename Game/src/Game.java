@@ -1,6 +1,6 @@
 public class Game {
-    public int addToScore(int diceRoll){
-        return switch (diceRoll) {
+    public int getToFieldValue(int field){
+        return switch (field) {
             case 2 -> 250;
             case 3 -> -100;
             case 4 -> 100;

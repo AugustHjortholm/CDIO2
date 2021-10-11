@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Game_Controller {
+public class GameController {
     private Dice dice = new Dice();
     private Player player1 = new Player("Player1");
     private Player player2 = new Player("Player2");
@@ -9,7 +9,7 @@ public class Game_Controller {
     private boolean gameRunning = true;
     private Scanner scan = new Scanner(System.in);
 
-    public Game_Controller() {
+    public GameController() {
         this.activePlayer = this.player1;
         this.gameBoard = new Game();
     }
@@ -20,10 +20,11 @@ public class Game_Controller {
         while (gameRunning) {
             scan.nextLine();
             this.dice.roll();
-            activePlayer.addToScore(gameBoard.addToScore(this.dice.getSum()));
+            activePlayer.addToScore(gameBoard.getToFieldValue(this.dice.getSum()));
             this.updateActivePlayerScore();
             this.swapActivePlayer();
-            if(checkForWin()){
+            if(checkForWin()) {
+                System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
                 gameRunning = false;
             }
         }
@@ -43,11 +44,6 @@ public class Game_Controller {
     }
 
     private boolean checkForWin() {
-        if (activePlayer.getScore()>=3000){
-            System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
-            return true;
-        } else {
-            return false;
-        }
+        return activePlayer.getScore()>=3000;
     }
 }
