@@ -1,3 +1,5 @@
+package main;
+
 public class GameBoard {
     public int getToFieldValue(int field){
         return switch (field) {
