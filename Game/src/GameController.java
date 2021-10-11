@@ -1,17 +1,21 @@
 import java.util.Scanner;
 
-public class Game_Controller {
-    private Dice dice = new Dice();
-    private Player player1 = new Player("Player1");
-    private Player player2 = new Player("Player2");
+public class GameController {
+    private final Dice dice;
+    private final Player player1;
+    private final Player player2;
     private Player activePlayer;
-    private Game gameBoard;
-    private boolean gameRunning = true;
-    private Scanner scan = new Scanner(System.in);
+    private final GameBoard gameBoard;
+    private boolean gameRunning;
+    private final Scanner scan = new Scanner(System.in);
 
-    public Game_Controller() {
+    public GameController() {
+        this.dice = new Dice();
+        this.player1 = new Player("Player 1");
+        this.player2 = new Player("Player 2");
         this.activePlayer = this.player1;
-        this.gameBoard = new Game();
+        this.gameBoard = new GameBoard();
+        this.gameRunning = true;
     }
 
     public void play() {
@@ -20,10 +24,11 @@ public class Game_Controller {
         while (gameRunning) {
             scan.nextLine();
             this.dice.roll();
-            activePlayer.addToScore(gameBoard.addToScore(this.dice.getSum()));
+            activePlayer.addToScore(gameBoard.getToFieldValue(this.dice.getSum()));
             this.updateActivePlayerScore();
             this.swapActivePlayer();
-            if(checkForWin()){
+            if(checkForWin()) {
+                System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
                 gameRunning = false;
             }
         }
@@ -43,11 +48,6 @@ public class Game_Controller {
     }
 
     private boolean checkForWin() {
-        if (activePlayer.getScore()>=3000){
-            System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
-            return true;
-        } else {
-            return false;
-        }
+        return activePlayer.getScore()>=3000;
     }
 }
