@@ -7,6 +7,7 @@ public class Game_Controller {
     private Player activePlayer;
     private Game gameBoard;
     private boolean gameRunning = true;
+    private Scanner scan = new Scanner(System.in);
 
     public Game_Controller() {
         this.activePlayer = this.player1;
@@ -17,6 +18,7 @@ public class Game_Controller {
         System.out.println(this.activePlayer.getName() + " starts!");
 
         while (gameRunning) {
+            scan.nextLine();
             this.dice.roll();
             activePlayer.addToScore(gameBoard.addToScore(this.dice.getSum()));
             this.updateActivePlayerScore();
