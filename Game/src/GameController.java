@@ -5,7 +5,7 @@ public class GameController {
     private final Player player1;
     private final Player player2;
     private Player activePlayer;
-    private final Game gameBoard;
+    private final GameBoard gameBoard;
     private boolean gameRunning;
     private final Scanner scan = new Scanner(System.in);
 
@@ -14,7 +14,7 @@ public class GameController {
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.activePlayer = this.player1;
-        this.gameBoard = new Game();
+        this.gameBoard = new GameBoard();
         this.gameRunning = true;
     }
 
