@@ -1,3 +1,5 @@
+package main;
+
 public class Game {
     public int addToScore(int diceRoll){
         return switch (diceRoll) {
