@@ -1,17 +1,21 @@
 import java.util.Scanner;
 
 public class GameController {
-    private Dice dice = new Dice();
-    private Player player1 = new Player("Player1");
-    private Player player2 = new Player("Player2");
+    private final Dice dice;
+    private final Player player1;
+    private final Player player2;
     private Player activePlayer;
-    private Game gameBoard;
-    private boolean gameRunning = true;
-    private Scanner scan = new Scanner(System.in);
+    private final Game gameBoard;
+    private boolean gameRunning;
+    private final Scanner scan = new Scanner(System.in);
 
     public GameController() {
+        this.dice = new Dice();
+        this.player1 = new Player("Player 1");
+        this.player2 = new Player("Player 2");
         this.activePlayer = this.player1;
         this.gameBoard = new Game();
+        this.gameRunning = true;
     }
 
     public void play() {
