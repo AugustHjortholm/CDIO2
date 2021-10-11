@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game();
+        Game_Controller game = new Game_Controller();
         game.play();
     }
-}//maybe rules like dce number should be defined in here
+}
 
