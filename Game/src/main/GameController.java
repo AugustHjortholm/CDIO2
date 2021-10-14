@@ -26,12 +26,17 @@ public class GameController {
         while (gameRunning) {
             scan.nextLine();
             this.dice.roll();
-            activePlayer.addToScore(gameBoard.getToFieldValue(this.dice.getSum()));
+            activePlayer.addToScore(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerScore();
-            this.swapActivePlayer();
-            if(checkForWin()) {
-                System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
-                gameRunning = false;
+            if (dice.getSum() == 10) {
+                System.out.print("\n" + activePlayer.getName() + " gets another turn \n");
+            }
+            else {
+                this.swapActivePlayer();
+                if (checkForWin()) {
+                    System.out.println(activePlayer.getName() + " has earned " + activePlayer.getScore() + " points and has won!");
+                    gameRunning = false;
+                }
             }
         }
     }
