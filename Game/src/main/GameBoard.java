@@ -70,6 +70,11 @@ public class GameBoard {
         gui.setDice(die1, die2);
     }
 
+    public void updatePlayerScore(int playerOneScore, int playerTwoScore) {
+        player1.setBalance(playerOneScore);
+        player2.setBalance(playerTwoScore);
+    }
+
     public int getToFieldValue(int field){
         return switch (field) {
             case 2 -> 250;
