@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 public class GameController {
     private final Dice dice;
     private final Player player1;
@@ -9,14 +7,13 @@ public class GameController {
     private Player activePlayer;
     private final GameBoard gameBoard;
     private boolean gameRunning;
-    private final Scanner scan = new Scanner(System.in);
 
     public GameController() {
         this.dice = new Dice();
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.activePlayer = this.player1;
-        this.gameBoard = new GameBoard();
+        this.gameBoard = new GameBoard(player1, player2);
         this.gameRunning = true;
     }
 
@@ -24,10 +21,14 @@ public class GameController {
         System.out.println(this.activePlayer.getName() + " starts!");
 
         while (gameRunning) {
-            scan.nextLine();
+            gameBoard.waitForUser();
+            gameBoard.resetPlayerPositions();
             this.dice.roll();
             activePlayer.addToScore(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerScore();
+
+            updateGUI();
+
             if (dice.getSum() == 10) {
                 System.out.print("\n" + activePlayer.getName() + " gets another turn \n");
             }
@@ -39,6 +40,13 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private void updateGUI() {
+        gameBoard.setActivePlayer(activePlayer);
+        gameBoard.setDiceValue(dice.getDie1(), dice.getDie2());
+        gameBoard.updateActivePlayerPosition(dice.getSum());
+        gameBoard.updatePlayerScore(player1.getScore(), player2.getScore());
     }
 
     private void updateActivePlayerScore() {
