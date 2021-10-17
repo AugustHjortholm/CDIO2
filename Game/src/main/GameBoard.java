@@ -9,6 +9,7 @@ import gui_main.*;
 import java.awt.*;
 
 public class GameBoard {
+    private Language language;
     private GUI_Field[] fields;
     GUI_Car player1_car;
     GUI_Player player1;
@@ -18,6 +19,7 @@ public class GameBoard {
     private GUI gui;
 
     public GameBoard(Player logic_player1, Player logic_player2) {
+        language = new English();
         fields = new GUI_Field[13]; // there are 11 fields in total
         createFields();
 
@@ -122,18 +124,8 @@ public class GameBoard {
     }
 
     private void createFields() {
-        fields[0] = new GUI_Street("Start", "", "Description", "Rent", Color.red, Color.WHITE);
-        fields[1] = new GUI_Street("", "", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[2] = new GUI_Street("Tower", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[3] = new GUI_Street("Crater", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[4] = new GUI_Street("Palace gates", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[5] = new GUI_Street("Cold desert", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[6] = new GUI_Street("Walled city", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[7] = new GUI_Street("Monastery", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[8] = new GUI_Street("Black cav", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[9] = new GUI_Street("Huts in the mountain", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[10] = new GUI_Street("The werewall", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[11] = new GUI_Street("The pit", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
-        fields[12] = new GUI_Street("Goldmine", "Subtext", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
+        for (int i = 0; i < 13; i++) {
+            fields[i] = new GUI_Street(language.getFieldTitle(i), language.getFieldSubtexts(i), language.getFieldDescriptions(i), language.getFieldRents(i), Color.darkGray, Color.white);
+        }
     }
 }
