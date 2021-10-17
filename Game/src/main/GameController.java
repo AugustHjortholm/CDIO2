@@ -28,6 +28,9 @@ public class GameController {
             this.dice.roll();
             activePlayer.addToScore(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerScore();
+
+            updateGUI();
+
             if (dice.getSum() == 10) {
                 System.out.print("\n" + activePlayer.getName() + " gets another turn \n");
             }
@@ -39,6 +42,12 @@ public class GameController {
                 }
             }
         }
+    }
+
+    private void updateGUI() {
+        gameBoard.setActivePlayer(activePlayer);
+        gameBoard.setDiceValue(dice.getDie1(), dice.getDie2());
+        gameBoard.updateActivePlayerPosition(dice.getSum());
     }
 
     private void updateActivePlayerScore() {

@@ -14,6 +14,7 @@ public class GameBoard {
     GUI_Player player1;
     GUI_Car player2_car;
     GUI_Player player2;
+    GUI_Player activePlayer;
     private GUI gui;
 
     public GameBoard(Player logic_player1, Player logic_player2) {
@@ -30,6 +31,8 @@ public class GameBoard {
         player2_car.setSecondaryColor(Color.orange);
         player2 = new GUI_Player(logic_player2.getName(), logic_player2.getScore(), player2_car);
 
+        activePlayer = player1;
+
         gui = new GUI(fields, Color.darkGray);
 
         gui.addPlayer(player1);
@@ -39,8 +42,20 @@ public class GameBoard {
         fields[0].setCar(player2, true);
     }
 
-    public void updatePlayerPosition(Player activePlayer, int position) {
+    public void setActivePlayer(Player player) {
+        if (player.getName().equals(player1.getName())) {
+            activePlayer = player1;
+        } else { // Assuming its player2 if it's not player1... maybe we should do some error handling?
+            activePlayer = player2;
+        }
+    }
 
+    public void updateActivePlayerPosition(int position) {
+        fields[position].setCar(activePlayer, true); // Assuming position will only be in range 2..12... Dice shouldn't be able to roll anything else, but maybe some error handling is appropriate.
+    }
+
+    public void setDiceValue(int die1, int die2) {
+        gui.setDice(die1, die2);
     }
 
     public int getToFieldValue(int field){
