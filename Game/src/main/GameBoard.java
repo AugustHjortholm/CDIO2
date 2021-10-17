@@ -116,6 +116,11 @@ public class GameBoard {
         }
     }
 
+    // Using chance card to display messages as its there anyway and I think it looks nice.
+    public void displayMessage(String message) {
+        gui.displayChanceCard(message);
+    }
+
     private void createFields() {
         fields[0] = new GUI_Street("Start", "", "Description", "Rent", Color.red, Color.WHITE);
         fields[1] = new GUI_Street("", "", "Description", "Rent", Color.DARK_GRAY, Color.WHITE);
