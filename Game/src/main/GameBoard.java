@@ -51,9 +51,21 @@ public class GameBoard {
     }
 
     public void updateActivePlayerPosition(int position) {
-        fields[position].setCar(activePlayer, true); // Assuming position will only be in range 2..12... Dice shouldn't be able to roll anything else, but maybe some error handling is appropriate.
+        moveActivePlayerForward(position);
+        //fields[position].setCar(activePlayer, true); // Assuming position will only be in range 2..12... Dice shouldn't be able to roll anything else, but maybe some error handling is appropriate.
     }
+    
+    public void resetPlayerPositions() {
+        // Have to iterate over each field. Weird design?
+        for (var field:
+             fields) {
+            field.removeAllCars();
+        }
 
+        fields[0].setCar(player1, true);
+        fields[0].setCar(player2, true);
+    }
+    
     public void setDiceValue(int die1, int die2) {
         gui.setDice(die1, die2);
     }
@@ -73,6 +85,26 @@ public class GameBoard {
             case 12 -> 650;
             default -> 0;
         };
+    }
+
+    private void moveActivePlayerForward(int steps) {
+        int current_pos = 0; // Activeplayer will always start at position 0 when beginning to move
+
+        while (current_pos < steps) {
+            fields[current_pos].removeAllCars(); // Need to replace the non moving car
+
+            if (current_pos == 0) { // Replace the nonactive player car as it is removed along with the active one
+                fields[current_pos].setCar(activePlayer.getName().equals(player1.getName()) ? player2 : player1, true);
+            }
+
+            fields[current_pos + 1].setCar(activePlayer, true);
+            ++current_pos;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void createFields() {

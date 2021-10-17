@@ -25,6 +25,7 @@ public class GameController {
 
         while (gameRunning) {
             scan.nextLine();
+            gameBoard.resetPlayerPositions();
             this.dice.roll();
             activePlayer.addToScore(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerScore();
