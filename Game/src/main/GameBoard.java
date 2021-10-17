@@ -92,6 +92,10 @@ public class GameBoard {
         };
     }
 
+    public void waitForUser() {
+        gui.getUserButtonPressed("", "Roll dice");
+    }
+
     private void moveActivePlayerForward(int steps) {
         int current_pos = 0; // Activeplayer will always start at position 0 when beginning to move
 

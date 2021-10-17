@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 public class GameController {
     private final Dice dice;
     private final Player player1;
@@ -9,7 +7,6 @@ public class GameController {
     private Player activePlayer;
     private final GameBoard gameBoard;
     private boolean gameRunning;
-    private final Scanner scan = new Scanner(System.in);
 
     public GameController() {
         this.dice = new Dice();
@@ -24,7 +21,7 @@ public class GameController {
         System.out.println(this.activePlayer.getName() + " starts!");
 
         while (gameRunning) {
-            scan.nextLine();
+            gameBoard.waitForUser();
             gameBoard.resetPlayerPositions();
             this.dice.roll();
             activePlayer.addToScore(gameBoard.getToFieldValue(dice.getSum()));
