@@ -16,7 +16,7 @@ public class GameController {
         this.player1 = new Player("Player 1");
         this.player2 = new Player("Player 2");
         this.activePlayer = this.player1;
-        this.gameBoard = new GameBoard();
+        this.gameBoard = new GameBoard(player1, player2);
         this.gameRunning = true;
     }
 
