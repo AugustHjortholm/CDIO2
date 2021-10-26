@@ -17,7 +17,7 @@ class PlayerJUnitTest {
     @Test
     @DisplayName("Tests that score can go negative")
     void scoreCantGoNegative() {
-        player.addToScore(-Integer.MAX_VALUE);
-        assertEquals(player.getScore(), 0);
+        player.addToValue(-Integer.MAX_VALUE);
+        assertEquals(player.getValue(), 0);
     }
 }

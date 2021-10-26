@@ -26,12 +26,12 @@ public class GameBoard {
         player1_car = new GUI_Car();
         player1_car.setPrimaryColor(Color.red);
         player1_car.setSecondaryColor(Color.orange);
-        player1 = new GUI_Player(logic_player1.getName(), logic_player1.getScore(), player1_car);
+        player1 = new GUI_Player(logic_player1.getName(), logic_player1.getValue(), player1_car);
 
         player2_car = new GUI_Car();
         player2_car.setPrimaryColor(Color.green);
         player2_car.setSecondaryColor(Color.orange);
-        player2 = new GUI_Player(logic_player2.getName(), logic_player2.getScore(), player2_car);
+        player2 = new GUI_Player(logic_player2.getName(), logic_player2.getValue(), player2_car);
 
         activePlayer = player1;
 
@@ -72,9 +72,9 @@ public class GameBoard {
         gui.setDice(die1, die2);
     }
 
-    public void updatePlayerScore(int playerOneScore, int playerTwoScore) {
-        player1.setBalance(playerOneScore);
-        player2.setBalance(playerTwoScore);
+    public void updatePlayerValue(int playerOneValue, int playerTwoValue) {
+        player1.setBalance(playerOneValue);
+        player2.setBalance(playerTwoValue);
     }
 
     public int getToFieldValue(int field){

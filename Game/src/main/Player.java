@@ -1,22 +1,22 @@
 package main;
 
 public class Player {
-    private int score = 1000;
+    private int value = 1000;
     private String name;
 
     public Player(String name) {
         this.name = name;
     }
 
-    public void addToScore(int n) {
-        this.score += n;
-        if (this.score < 0) {
-            this.score = 0;
+    public void addToValue(int n) {
+        this.value += n;
+        if (this.value < 0) {
+            this.value = 0;
         }
     }
 
-    public int getScore() {
-        return this.score;
+    public int getValue() {
+        return this.value;
     }
 
     public String getName() {
