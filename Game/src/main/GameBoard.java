@@ -18,7 +18,7 @@ public class GameBoard {
     GUI_Player activePlayer;
     private GUI gui;
 
-    public GameBoard(Player logic_player1, Player logic_player2, PlayerValueAccount value_player1, PlayerValueAccount value_player2) {
+    public GameBoard(Player logic_player1, Player logic_player2) {
         language = new English();
         fields = new GUI_Field[13]; // there are 11 fields in total
         createFields();
@@ -26,12 +26,12 @@ public class GameBoard {
         player1_car = new GUI_Car();
         player1_car.setPrimaryColor(Color.red);
         player1_car.setSecondaryColor(Color.orange);
-        player1 = new GUI_Player(logic_player1.getName(), value_player1.getValue(), player1_car);
+        player1 = new GUI_Player(logic_player1.getName(), logic_player1.getValueAccount().getValue(), player1_car);
 
         player2_car = new GUI_Car();
         player2_car.setPrimaryColor(Color.green);
         player2_car.setSecondaryColor(Color.orange);
-        player2 = new GUI_Player(logic_player2.getName(), value_player2.getValue(), player2_car);
+        player2 = new GUI_Player(logic_player2.getName(), logic_player2.getValueAccount().getValue(), player2_car);
 
         activePlayer = player1;
 
