@@ -25,17 +25,17 @@ public class English extends Language {
         this.fieldSubtexts = new String[]{
                 "",
                 "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "+250",
+                "-100",
+                "+100",
+                "-20",
+                "+180",
+                "0",
+                "-70",
+                "+60",
+                "-80, Extra turn",
+                "-50",
+                "+650"
         };
     }
 
