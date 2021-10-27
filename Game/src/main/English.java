@@ -30,7 +30,7 @@ public class English extends Language {
                 "+100 value",
                 "-20 value",
                 "+180 value",
-                "0",
+                "0 value",
                 "-70 value",
                 "+60 value",
                 "-80 value, Extra turn",
