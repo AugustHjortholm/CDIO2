@@ -22,7 +22,7 @@ public class GameController {
 
         while (gameRunning) {
             gameBoard.waitForUser();
-            gameBoard.resetPlayerPositions();
+            gameBoard.resetPlayerPositions(); // Only reset position after user rolls dice.
             this.dice.roll();
             activePlayer.getValueAccount().addToValue(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerValue();
@@ -47,6 +47,7 @@ public class GameController {
         gameBoard.setDiceValue(dice.getDie1(), dice.getDie2());
         gameBoard.updateActivePlayerPosition(dice.getSum());
         gameBoard.updatePlayerValue(player1.getValueAccount().getValue(), player2.getValueAccount().getValue());
+        gameBoard.displayFieldInfo(dice.getSum());
     }
 
     private void updateActivePlayerValue() {

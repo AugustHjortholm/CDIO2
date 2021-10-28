@@ -33,8 +33,6 @@ public class GameBoard {
         player2_car.setSecondaryColor(Color.orange);
         player2 = new GUI_Player(logic_player2.getName(), logic_player2.getValueAccount().getValue(), player2_car);
 
-        activePlayer = player1;
-
         gui = new GUI(fields, Color.darkGray);
 
         gui.addPlayer(player1);
@@ -42,23 +40,40 @@ public class GameBoard {
 
         fields[0].setCar(player1, true);
         fields[0].setCar(player2, true);
+
+        activePlayer = player1;
     }
 
     public void setActivePlayer(Player player) {
         if (player.getName().equals(player1.getName())) {
             activePlayer = player1;
-        } else { // Assuming its player2 if it's not player1... maybe we should do some error handling?
+        } else { // Assuming its player2 if it's not player1... could do error handling instead.
             activePlayer = player2;
         }
     }
 
     public void updateActivePlayerPosition(int position) {
-        moveActivePlayerForward(position);
-        //fields[position].setCar(activePlayer, true); // Assuming position will only be in range 2..12... Dice shouldn't be able to roll anything else, but maybe some error handling is appropriate.
+        int current_pos = 0; // Activeplayer will always start at position 0 when beginning to move
+
+        while (current_pos < position) {
+            fields[current_pos].removeAllCars(); // Need to replace the non moving car
+
+            if (current_pos == 0) { // Replace the nonactive player car as it is removed along with the active one
+                fields[current_pos].setCar(activePlayer.getName().equals(player1.getName()) ? player2 : player1, true);
+            }
+
+            fields[current_pos + 1].setCar(activePlayer, true);
+            ++current_pos;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     public void resetPlayerPositions() {
-        // Have to iterate over each field. Weird design?
+        // API requires us to iterate over each field.
         for (var field:
              fields) {
             field.removeAllCars();
@@ -98,29 +113,9 @@ public class GameBoard {
         gui.getUserButtonPressed("", "Roll dice");
     }
 
-    private void moveActivePlayerForward(int steps) {
-        int current_pos = 0; // Activeplayer will always start at position 0 when beginning to move
-
-        while (current_pos < steps) {
-            fields[current_pos].removeAllCars(); // Need to replace the non moving car
-
-            if (current_pos == 0) { // Replace the nonactive player car as it is removed along with the active one
-                fields[current_pos].setCar(activePlayer.getName().equals(player1.getName()) ? player2 : player1, true);
-            }
-
-            fields[current_pos + 1].setCar(activePlayer, true);
-            ++current_pos;
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     // Using chance card to display messages as its there anyway and I think it looks nice.
-    public void displayMessage(String message) {
-        gui.displayChanceCard(message);
+    public void displayFieldInfo(int field) {
+        gui.displayChanceCard(language.getFieldDescriptions(field));
     }
 
     private void createFields() {
