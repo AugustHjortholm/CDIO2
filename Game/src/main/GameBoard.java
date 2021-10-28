@@ -114,8 +114,8 @@ public class GameBoard {
     }
 
     // Using chance card to display messages as its there anyway and I think it looks nice.
-    public void displayMessage(String message) {
-        gui.displayChanceCard(message);
+    public void displayFieldInfo(int field) {
+        gui.displayChanceCard(language.getFieldDescriptions(field));
     }
 
     private void createFields() {

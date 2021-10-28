@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df5eda94-fa0c-4805-b48b-dc3f1d01620e" name="Changes" comment="Removed redudent function">
+    <list default="true" id="df5eda94-fa0c-4805-b48b-dc3f1d01620e" name="Changes" comment="Refined comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/src/main/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/src/main/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game/src/main/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game/src/main/GameController.java" afterDir="false" />
@@ -91,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1635416495679</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Swapped order of constructors">
+      <created>1635417522231</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1635417522231</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refined comments">
+      <created>1635417808448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1635417808448</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,7 +124,9 @@
     <MESSAGE value="added Field subtext" />
     <MESSAGE value="Made it possible to change dice" />
     <MESSAGE value="Removed redudent function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redudent function" />
+    <MESSAGE value="Swapped order of constructors" />
+    <MESSAGE value="Refined comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refined comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -47,6 +47,7 @@ public class GameController {
         gameBoard.setDiceValue(dice.getDie1(), dice.getDie2());
         gameBoard.updateActivePlayerPosition(dice.getSum());
         gameBoard.updatePlayerValue(player1.getValueAccount().getValue(), player2.getValueAccount().getValue());
+        gameBoard.displayFieldInfo(dice.getSum());
     }
 
     private void updateActivePlayerValue() {
