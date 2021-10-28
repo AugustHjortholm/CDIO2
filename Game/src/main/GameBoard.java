@@ -47,7 +47,7 @@ public class GameBoard {
     public void setActivePlayer(Player player) {
         if (player.getName().equals(player1.getName())) {
             activePlayer = player1;
-        } else { // Assuming its player2 if it's not player1... maybe we should do some error handling?
+        } else { // Assuming its player2 if it's not player1... could do error handling instead.
             activePlayer = player2;
         }
     }
@@ -73,7 +73,7 @@ public class GameBoard {
     }
     
     public void resetPlayerPositions() {
-        // Have to iterate over each field. Weird design?
+        // API requires us to iterate over each field.
         for (var field:
              fields) {
             field.removeAllCars();
