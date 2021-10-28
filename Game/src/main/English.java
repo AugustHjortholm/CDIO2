@@ -25,17 +25,17 @@ public class English extends Language {
         this.fieldSubtexts = new String[]{
                 "",
                 "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "+250 value",
+                "-100 value",
+                "+100 value",
+                "-20 value",
+                "+180 value",
+                "0 value",
+                "-70 value",
+                "+60 value",
+                "-80 value, Extra turn",
+                "-50 value",
+                "+650 value"
         };
     }
 
@@ -44,17 +44,17 @@ public class English extends Language {
         this.fieldDescriptions = new String[]{
                 "",
                 "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                "You reached the Tower and found a gold chest",
+                "You fell down a crater and lost your wallet",
+                "You found the hidden palace and the master is happy to see you, for your trouble he gave you some gold",
+                "You reached the cold desert and had to buy warm clothes",
+                "You found the Walled City which had been lost to time, you get awarded for your discovery",
+                "You reached the monastery, the monks ignored you.",
+                "You stumbled upon a black cave, but as you enter you hear a dark and scary voice. You ran away as fast as possible and dropped some gold.",
+                "You found some abandoned huts in the mountain, you choose to loot it and found some gold",
+                "You get lost on your way and reached the Werewall, he demanded you pay him gold to live. You did and ran away afterwards",
+                "You fell down a pit and lost some gold",
+                "You found gold in the mountain and sold it for 650, you are rich!"
         };
     }
 
