@@ -24,7 +24,7 @@ public class GameController {
             gameBoard.waitForUser();
             gameBoard.resetPlayerPositions();
             this.dice.roll();
-            activePlayer.addToValue(gameBoard.getToFieldValue(dice.getSum()));
+            activePlayer.getValueAccount().addToValue(gameBoard.getToFieldValue(dice.getSum()));
             this.updateActivePlayerValue();
 
             updateGUI();
@@ -35,7 +35,7 @@ public class GameController {
             else {
                 this.swapActivePlayer();
                 if (checkForWin()) {
-                    System.out.println(activePlayer.getName() + " has earned " + activePlayer.getValue() + " points and has won!");
+                    System.out.println(activePlayer.getName() + " has earned " + activePlayer.getValueAccount().getValue() + " in value and has won!");
                     gameRunning = false;
                 }
             }
@@ -46,12 +46,12 @@ public class GameController {
         gameBoard.setActivePlayer(activePlayer);
         gameBoard.setDiceValue(dice.getDie1(), dice.getDie2());
         gameBoard.updateActivePlayerPosition(dice.getSum());
-        gameBoard.updatePlayerValue(player1.getValue(), player2.getValue());
+        gameBoard.updatePlayerValue(player1.getValueAccount().getValue(), player2.getValueAccount().getValue());
     }
 
     private void updateActivePlayerValue() {
         String playerName = this.activePlayer.getName();
-        System.out.println(playerName + " rolled " + this.dice.getDie1() + " and " + this.dice.getDie2() + " bringing his value to " + this.activePlayer.getValue() + "!");
+        System.out.println(playerName + " rolled " + this.dice.getDie1() + " and " + this.dice.getDie2() + " bringing his value to " + this.activePlayer.getValueAccount().getValue() + "!");
     }
 
     private void swapActivePlayer() {
@@ -63,6 +63,6 @@ public class GameController {
     }
 
     private boolean checkForWin() {
-        return activePlayer.getValue()>=3000;
+        return activePlayer.getValueAccount().getValue()>=3000;
     }
 }
