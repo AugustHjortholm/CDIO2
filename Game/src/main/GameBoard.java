@@ -33,8 +33,6 @@ public class GameBoard {
         player2_car.setSecondaryColor(Color.orange);
         player2 = new GUI_Player(logic_player2.getName(), logic_player2.getValueAccount().getValue(), player2_car);
 
-        activePlayer = player1;
-
         gui = new GUI(fields, Color.darkGray);
 
         gui.addPlayer(player1);
@@ -42,6 +40,8 @@ public class GameBoard {
 
         fields[0].setCar(player1, true);
         fields[0].setCar(player2, true);
+
+        activePlayer = player1;
     }
 
     public void setActivePlayer(Player player) {
